@@ -1,0 +1,36 @@
+Micronaut supports authentication with LDAP out of the box. To get started, add the `security-ldap` dependency to your application.
+
+[source,groovy]
+.build.gradle
+----
+dependencies {
+...
+..
+.
+include::{sourceDir}/build.gradle[tag=security-ldap]
+}
+----
+
+We are going to use an https://www.forumsys.com/tutorials/integration-how-to/ldap/online-ldap-test-server/[Online LDAP test server] for this guide.
+
+Create several configuration properties matching those of the test LDAP Server.
+
+[source,yaml]
+.src/main/resources/application.yml
+----
+micronaut:
+  ..
+  .
+  security:
+  ...
+  ..
+include::{sourceDir}/src/main/resources/application.yml[tag=ldap]
+----
+
+<1> The LDAP authentication in Micronaut supports configuration of one or more LDAP servers to authenticate with. You need to name each one. In this tutorial, we use `default`.
+<2> Each server has it's own settings and can be enabled or disabled.
+<3> Sets the manager DN
+<4> Sets the manager password.
+<5> Sets the base DN to search.
+<6> Enable group search.
+<7> Sets the base DN to search from.

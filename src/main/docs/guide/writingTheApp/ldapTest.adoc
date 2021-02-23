@@ -1,0 +1,14 @@
+Create a test which verifies an LDAP user can login.
+
+[source,groovy]
+.src/test/groovy/example/micronaut/LoginLdapSpec.groovy
+----
+include::{sourceDir}/src/test/groovy/example/micronaut/LoginLdapSpec.groovy[]
+----
+
+<1> Annotate the class with `@MicronatTest` to let Micronaut starts the embedded server and inject the beans. More info: https://micronaut-projects.github.io/micronaut-test/latest/guide/index.html[https://micronaut-projects.github.io/micronaut-test/latest/guide/index.html].
+<2> Inject the `HttpClient` bean in the application context.
+<3> Inject to `TokenValidator` bean.
+<4> Creating HTTP Requests is easy thanks to Micronaut's fluid API.
+<5> If you attempt to access a secured endpoint without authentication, 401 is returned
+<6> Use the `tokenValidator` bean previously injected.

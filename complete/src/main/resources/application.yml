@@ -1,0 +1,56 @@
+micronaut:
+  application:
+    name: complete
+---
+#tag::security[]
+micronaut:
+  security:
+    authentication: bearer # <1>
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator: # <2>
+              secret: pleaseChangeThisSecretForANewOne  # <3>
+#end::security[]
+
+
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+#tag::ldap[]
+
+#    ldap:
+#      default: # <1>
+#        context:
+#          server: 'ldap://ldap.forumsys.com:389'  # <2>
+#          managerDn: 'cn=read-only-admin,dc=example,dc=com'  # <3>
+#          managerPassword: 'password'  # <4>
+#        search:
+#          base: "dc=example,dc=com"  # <5>
+#        groups:
+#          enabled: true  # <6>
+#          base: "dc=example,dc=com" # <7>
+
+#end::ldap[]
+---
+#tag::datasource[]
+dataSource:
+  driverClassName: org.postgresql.Driver
+  dialect: org.hibernate.dialect.PostgreSQLDialect
+  dbCreate: create
+  url: jdbc:postgresql://localhost:5432/localtest
+  username: postgres
+  password: 'postgres'
+  pooled: true
+  jmxExport: true
+hibernate:
+  hbm2ddl:
+    auto: update
+  cache:
+    queries: false
+    use_second_level_cache: false
+    use_query_cache: false
+#end::datasource[]

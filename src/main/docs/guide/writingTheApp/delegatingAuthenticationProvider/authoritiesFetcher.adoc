@@ -1,0 +1,20 @@
+Create an interface to retrieve roles given a username.
+
+[source,groovy]
+.src/main/groovy/example/micronaut/AuthoritiesFetcher.groovy
+----
+include::{sourceDir}/src/main/groovy/example/micronaut/AuthoritiesFetcher.groovy[]
+----
+
+Provide an implementation:
+
+[source,groovy]
+.src/main/groovy/example/micronaut/AuthoritiesFetcherService.groovy
+----
+include::{sourceDir}/src/main/groovy/example/micronaut/AuthoritiesFetcherService.groovy[]
+----
+
+<1> Use `javax.inject.Singleton` to designate a class a a singleton.
+<2> `UserRoleGormService` is injected via constructor injection.
+
+

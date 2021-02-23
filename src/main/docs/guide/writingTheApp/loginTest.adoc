@@ -1,0 +1,8 @@
+Test `/login` endpoint. We verify both LDAP and DB authentication providers work.
+
+[source,groovy]
+.src/test/groovy/example/micronaut/LoginControllerSpec.groovy
+----
+include::{sourceDir}/src/test/groovy/example/micronaut/LoginControllerSpec.groovy[]
+----
+
